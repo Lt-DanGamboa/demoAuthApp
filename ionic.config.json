@@ -1,0 +1,7 @@
+{
+  "name": "demoAuthApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
