@@ -1,11 +1,25 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>Log In</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button (click)="login()">LoginSUPnIGA!!</ion-button>
-  <ion-button (click)="logonAngular()">LoginSUPnIGAAngular!!</ion-button>
-  <ion-button (click)="logonNative()">LoginSUPnIGANative!!</ion-button>
+<ion-content class="vertical-center ion-padding">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="floating">Username 
+        </ion-label>
+        <ion-input required type="text" name="username" ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Last Name </ion-label>
+        <ion-input required type="password" name="password" ngModel></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin">Log In</ion-button>
+    </div>
+  </form>
 </ion-content>

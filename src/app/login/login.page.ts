@@ -8,6 +8,7 @@ import { take, map, switchMap } from 'rxjs/operators';
 import { ApiUserToken, Credentials } from '../interfaces/models';
 import { HTTP } from '@ionic-native/http/ngx';
 import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -28,8 +29,8 @@ export class LoginPage implements OnInit {
 
   }
 
-  login(){
-    this.auth.login(this.credentials).subscribe(async res => {
+  login(loginForm: NgForm){
+    this.auth.login(loginForm.value).subscribe(async res => {
       if (res){
         this.router.navigateByUrl('/members');
       }else{
@@ -43,23 +44,9 @@ export class LoginPage implements OnInit {
     });
   }
 
-  logonAngular(){
-    console.log(this.credentials);
-    this.http.post<ApiUserToken>('http://192.168.1.79/api/Login/Login', this.credentials).pipe(
-      take(1),
-      map(res => {
-        console.log(res);
-      })
-    );
+  logOut(){
+    this.auth.logout();
   }
 
-  logonNative(){
-    let nativeCall = this.nativeHttp.post('http://192.168.1.79/api/Login/Login', this.credentials, {});
-    from(nativeCall).pipe(
-      take(1),
-      map(res => {
-        console.log(res);
-      }));
-  }
 
 }
